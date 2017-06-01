@@ -21,12 +21,12 @@ def getCombinations(string):
 
 
 # Recursive optimization of the geohash set
-def compress(geohashes):
+def compress(geohashes, minlevel, maxlevel):
     deletegh = set()
     final_geohashes = set()
     flag = True
     final_geohashes_size = 0
-
+    
     # Input size less than 32
     if len(geohashes) < 32:
         puts(colored.red(
@@ -35,35 +35,46 @@ def compress(geohashes):
 
 
     while flag == True:
+
         final_geohashes.clear()
         deletegh.clear()
 
         for geohash in geohashes:
 
-            # Get geohash to generate combinations for
-            part = geohash[:-1]
+            geohash_length = len(geohash)
 
-            # Proceed only if not already processed
-            if part not in deletegh and geohash not in deletegh:
+            # Compress only if geohash length is greater than the min level
+            if geohash_length >= minlevel:
+                # Get geohash to generate combinations for
+                part = geohash[:-1]
 
-                # Generate combinations
-                combinations = set(getCombinations(part))
+                # Proceed only if not already processed
+                if part not in deletegh and geohash not in deletegh:
 
-                # If all generated combinations exist in the input set
-                if combinations.issubset(geohashes):
-                    # Add part to temporary output
-                    final_geohashes.add(part)
-                    # Add part to deleted geohash set
-                    deletegh.add(part)
+                    # Generate combinations
+                    combinations = set(getCombinations(part))
 
-                # Else add the geohash to the temp out and deleted set
-                else:
-                    deletegh.add(geohash)
-                    final_geohashes.add(geohash)
+                    # If all generated combinations exist in the input set
+                    if combinations.issubset(geohashes):
+                        # Add part to temporary output
+                        final_geohashes.add(part)
+                        # Add part to deleted geohash set
+                        deletegh.add(part)
 
-                # Break if compressed output size same as the last iteration
-                if final_geohashes_size == len(final_geohashes):
-                    flag = False
+                    # Else add the geohash to the temp out and deleted set
+                    else:
+
+                        deletegh.add(geohash)
+
+                        # Forced compression if geohash length is greater than max level after combination check failure
+                        if geohash_length >= maxlevel:
+                            final_geohashes.add(geohash[:maxlevel])
+                        else:
+                            final_geohashes.add(geohash)
+
+                    # Break if compressed output size same as the last iteration
+                    if final_geohashes_size == len(final_geohashes):
+                        flag = False
 
         final_geohashes_size = len(final_geohashes)
 
@@ -80,12 +91,21 @@ def compress(geohashes):
 
 
 def main():
+
     start_time = time.time()
+    output_file = 'output.csv'
+    minlevel = 1
+    maxlevel = 12
 
     # Fetch input arguments
     parser = argparse.ArgumentParser()
     parser.add_argument('input', help='input filename containing list of geohashes')
-    parser.add_argument('--output', default='output.csv', help='output filename containing a optimized list of geohashes (default: output.csv)')
+    parser.add_argument('--output', default='output.csv',
+                        help='output filename containing a optimized list of geohashes (default: output.csv)')
+    parser.add_argument('--minlevel', default=1,
+                        help='minimum level of geohash (default: 1)')
+    parser.add_argument('--maxlevel', default=12,
+                        help='maximum level of geohash  (default: 12)')
 
     args = parser.parse_args()
 
@@ -93,8 +113,12 @@ def main():
 
     if 'output' in args:
         output_file  = args.output
-    else:
-        output_file = 'output.csv'
+
+    if 'minlevel' in args:
+        minlevel = args.minlevel
+
+    if 'maxlevel' in args:
+        maxlevel = args.maxlevel
 
     fp = open(output_file, "a");
 
@@ -108,7 +132,7 @@ def main():
 
     puts(colored.red('Starting compression\n'))
 
-    georaptor_out = compress(geohashes)
+    georaptor_out = compress(geohashes, int(minlevel), int(maxlevel))
 
 
     if georaptor_out != False:
