@@ -43,7 +43,7 @@ $ georaptor sample.csv
 
 OR
 
-$ georaptor sample.csv --output sample_out.csv
+$ georaptor sample.csv --output sample_out.csv --minlevel 3 --maxlevel 4
 
 
 Installation
