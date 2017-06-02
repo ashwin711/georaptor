@@ -1,3 +1,5 @@
+[![Donatecoins](http://donatecoins.org/btc/1HeMeMU2qUFDRZpRQMJ2v27Dw3h3gShJ5b.svg)](http://donatecoins.org/btc/1HeMeMU2qUFDRZpRQMJ2v27Dw3h3gShJ5b)
+
 GeoRaptor: Python Geohash Compression Tool
 ===========================================
 
