@@ -78,10 +78,6 @@ def compress(geohashes, minlevel, maxlevel):
 
         final_geohashes_size = len(final_geohashes)
 
-        if flag == True:
-            with indent(4):
-                puts(colored.red('Compressed to: ' + str("{:,}".format(len(final_geohashes)))))
-
         geohashes.clear()
 
         # Temp output moved to the primary geohash set
@@ -134,6 +130,7 @@ def main():
 
     georaptor_out = compress(geohashes, int(minlevel), int(maxlevel))
 
+    puts(colored.red('Compressed to: ' + str("{:,}".format(len(georaptor_out)))))
 
     if georaptor_out != False:
 
