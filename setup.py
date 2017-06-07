@@ -4,14 +4,14 @@ import setuptools
 setup(
   name = 'georaptor',
   py_modules = ['georaptor'],
-  version = '2.0.2',
+  version = '2.0.3',
   description = 'A Python Geohash Compression Tool',
   long_description = open('README.rst').read(),
   author = 'Ashwin Nair',
   author_email = 'ashwinnair.ua@gmail.com',
   license = "MIT",
   url = 'https://github.com/ashwin711/georaptor',
-  download_url = 'https://github.com/ashwin711/georaptor/tarball/2.0.2',
+  download_url = 'https://github.com/ashwin711/georaptor/tarball/2.0.3',
   keywords = ['geohash', 'optimizer', 'compression', 'location'],
   classifiers = [
     'Development Status :: 5 - Production/Stable',
