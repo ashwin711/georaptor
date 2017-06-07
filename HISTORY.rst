@@ -3,10 +3,18 @@
 Release History
 ---------------
 
+2.0.2 (2017-06-07)
++++++++++++++++++++
+
+**Minor change**
+
+- License modified.
+- Minimum requirement of 32 geohashes removed.
+
 2.0.1 (2017-06-03)
 +++++++++++++++++++
 
-**Minor chnage**
+**Minor change**
 
 - Print statement removed from the compress function.
 
