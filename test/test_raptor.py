@@ -10,7 +10,7 @@ class CombinationsTestCase(unittest.TestCase):
                         'tdnu2n', 'tdnu2p', 'tdnu2q', 'tdnu2r', 'tdnu2s', 'tdnu2t', 'tdnu2u', 'tdnu2v', 'tdnu2w', 'tdnu2x',
                         'tdnu2y', 'tdnu2z'])
 
-        output = set(georaptor.getCombinations(string))
+        output = set(georaptor.get_combinations(string))
         self.assertEqual(output, combinations)
 
 class CompressionTestCase(unittest.TestCase):
