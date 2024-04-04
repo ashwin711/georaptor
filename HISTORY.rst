@@ -2,6 +2,13 @@
 
 Release History
 ---------------
+3.0.0 (2024-04-04)
++++++++++++++++++++
+
+**Minor change**
+
+- Upgraded to Python 3
+- Update README
 
 2.0.3 (2017-06-07)
 +++++++++++++++++++
