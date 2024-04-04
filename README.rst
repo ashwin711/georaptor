@@ -1,6 +1,3 @@
-.. image:: http://donatecoins.org/btc/1HeMeMU2qUFDRZpRQMJ2v27Dw3h3gShJ5b.svg
-   :target: http://donatecoins.org/btc/1HeMeMU2qUFDRZpRQMJ2v27Dw3h3gShJ5b
-
 GeoRaptor: Python Geohash Compression Tool
 ===========================================
 
@@ -63,7 +60,7 @@ License:
 
 Licensed under the Apache License, Version 2.0. ::
 
-    Copyright 2017 Ashwin Nair <https://www.linkedin.com/in/nairashwin7>
+    Copyright 2024 Ashwin Nair <https://www.linkedin.com/in/ashwin-nair7>
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
